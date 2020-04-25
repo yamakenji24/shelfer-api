@@ -35,5 +35,5 @@ func Close() {
 	}
 }
 func autoMigration() {
-	db.AutoMigrate(&models.User{})
+	db.AutoMigrate(&models.User{}, &models.Book{})
 }

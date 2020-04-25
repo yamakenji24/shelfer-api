@@ -19,9 +19,13 @@ func main() {
 	router := gin.Default()
 	router.Use(cors.Default())
 
-	router.POST("login", func(c *gin.Context) {
+	router.POST("/login", func(c *gin.Context) {
 		controllers.Login(c)
 	})
+	router.POST("/storage", func(c *gin.Context) {
+		controllers.StoreBook(c)
+	})
+
 	db.Connection()
 
 	router.Run()
