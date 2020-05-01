@@ -18,3 +18,11 @@ func CreateBook(b *models.BookParams) (err error) {
 
 	return tx.Commit().Error
 }
+
+func RequestAllBook() (book []models.Book, err error) {
+	db := db.GetDB()
+	if err := db.Find(&book).Error; err != nil {
+		return nil, err
+	}
+	return book, nil
+}

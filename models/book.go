@@ -16,12 +16,3 @@ type Book struct {
 type BookParams struct {
 	Storage []Book `json:"storage"`
 }
-type BookInfo struct {
-	BookId    string `json:"book_id"`
-	Title     string `json:"title"`
-	Authors   string `json:"authors"`
-	Descrip   string `json:"descrip"`
-	PbDate    string `json:"pbDate"`
-	InfoLink  string `json:"infoLink"`
-	ImageLink string `json:"imageLink"`
-}

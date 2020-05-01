@@ -26,3 +26,20 @@ func StoreBook(c *gin.Context) error {
 	})
 	return nil
 }
+
+func RequestStoredBook(c *gin.Context) error {
+	book, err := bookservice.RequestAllBook()
+	if err != nil {
+		c.JSON(http.StatusBadRequest, err)
+		return err
+	}
+
+	c.JSON(http.StatusOK, struct {
+		Status string        `json:"status"`
+		Books  []models.Book `json:"books"`
+	}{
+		Status: "success",
+		Books:  book,
+	})
+	return nil
+}
