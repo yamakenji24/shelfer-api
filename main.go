@@ -29,6 +29,9 @@ func main() {
 	router.POST("/login", func(c *gin.Context) {
 		controllers.Login(c)
 	})
+	router.POST("/createuser", func(c *gin.Context) {
+		controllers.Create(c)
+	})
 
 	sampleGroup := router.Group("/storage", auth.CheckJWTHandler)
 
