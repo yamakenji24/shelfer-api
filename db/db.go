@@ -1,6 +1,7 @@
 package db
 
 import (
+	"fmt"
 	"os"
 
 	"github.com/jinzhu/gorm"
@@ -14,14 +15,16 @@ var (
 )
 
 func Connection() {
-	dbuser := os.Getenv("dbuser")
-	dbpass := os.Getenv("dbpass")
-	dbname := os.Getenv("dbname")
+	dbuser := os.Getenv("DB_USER")
+	dbpass := os.Getenv("DB_PASS")
+	dbname := os.Getenv("DB_NAME")
+	fmt.Println(dbuser, dbpass, dbname)
 	db, err = gorm.Open(
 		"postgres",
 		"user="+dbuser+" dbname="+dbname+" password="+dbpass+" sslmode=disable",
 	)
 	if err != nil {
+		fmt.Println("failed to connect db")
 		panic(err)
 	}
 	autoMigration()
